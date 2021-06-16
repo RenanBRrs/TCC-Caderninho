@@ -1,0 +1,103 @@
+header .open-menu {
+  width: 2rem;
+  height: 2rem;
+  padding: 0.2rem;
+}
+
+header .closed-menu {
+  display: none;
+}
+
+header .open-menu:hover {
+  border-radius: 50%;
+  background-color: var(--color-primary-light);
+}
+
+header h3 {
+  font-size: 3.5rem;
+  font-weight: 400;
+  color: var(--color-secondary);
+  display: none;
+}
+
+header .notification {
+  position: relative;
+}
+
+header .notification svg {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+header .notification p {
+  width: 1.5rem;
+  height: 1.5rem;
+  position: absolute;
+  right: 0rem;
+  bottom: 0rem;
+  font-size: 1.2rem;
+  border-radius: 50%;
+  background-color: var(--color-secondary);
+  text-align: center;
+  font-weight: 500;
+}
+
+header .search {
+  border-radius: 16px;
+  padding: 0.5rem;
+  background-color: var(--color-primary-light);
+  position: relative;
+}
+
+header .search input {
+  font-size: 1rem;
+  border: none;
+  outline: none;
+  background-color: var(--color-primary-light);
+  margin-right: 2rem;
+}
+
+header .search svg {
+  width: 2rem;
+  height: 2rem;
+  padding: 0.2rem;
+  position: absolute;
+  right: 0.5rem;
+  top: 0.2rem;
+}
+
+header .search svg:hover {
+  background-color: var(--color-primary);
+  border-radius: 50%;
+}
+
+header .user-content img {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+header .user-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+header .user-content .user {
+  display: none;
+}
+
+header .user-content .user strong {
+  text-transform: capitalize;
+}
+
+@media (min-width: 768px) {
+  header .closed-menu {
+    display: block;
+  }
+  header h3,
+  header .user-content .user {
+    display: block;
+  }
+}

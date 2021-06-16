@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    container_name: caderninho
+    command: sh -c "npm install && npm install -g nodemon knex && knex migrate:latest && knex seed:run && npm start"
+    ports:
+      - ${PORT}:${PORT}
+    volumes:
+      - .:/usr/caderninho
+    links:
+      - db
+    depends_on:
+      - db
+    environment:
+      TZ: America/Fortaleza
+      DB_HOST: host.docker.internal
+      DB_USER: ${DB_USER}
+      DB_PASS: ${DB_PASS}
+  db:
+    image: postgres:alpine
+    container_name: caderninho-db
+    ports:
+      - ${DB_PORT}:5432
+    environment:
+      POSTGRES_PASSWORD: ${DB_PASS}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_DB: ${DB_DATABASE}
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4
+    ports:
+      - 15432:80
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}

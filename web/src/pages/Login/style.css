@@ -1,0 +1,67 @@
+.login {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.login .login-img-background {
+  display: none;
+}
+
+.login .login-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+  width: 100vw;
+}
+
+.login .login-section header {
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login .login-section header button {
+  border: none;
+  border-radius: 0;
+  background-color: var(--color-background);
+  opacity: 0.7;
+  margin: 1rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.login .login-section .login-section-main {
+  width: 100vw;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  padding: 0 3rem;
+}
+
+.login .login-section .active {
+  border-bottom: 2px solid var(--color-primary-dark);
+  color: var(--color-primary-dark);
+}
+
+@media (min-width: 900px) {
+  .login {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 60vw 40vw;
+  }
+  .login .login-img-background {
+    display: block;
+    width: 60vw;
+    height: 100vh;
+  }
+  .login .login-section,
+  .login .login-section header,
+  .login .login-section .login-section-main {
+    width: 40vw;
+  }
+}

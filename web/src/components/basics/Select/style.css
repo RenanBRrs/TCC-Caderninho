@@ -1,0 +1,63 @@
+.select-container {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  top: 0;
+  z-index: 10;
+}
+
+.select-container .select-input {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.select-container .select-input input {
+  font-size: 1rem;
+  width: 100%;
+  border: none;
+  outline: none;
+  background: none;
+  margin: 0.3rem;
+}
+
+.select-container svg {
+  text-align: center;
+}
+
+.select-container .select-open {
+  border-left: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.select-container .select-options {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-top: none;
+  border-radius: 0 0 5px 5px;
+  background: var(--color-primary);
+  padding: 0.5rem 0;
+}
+
+.select-container .select-options button {
+  width: 100%;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 0.2rem;
+  text-align: left;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.select-container .select-options button:hover {
+  background-color: var(--color-secondary);
+}

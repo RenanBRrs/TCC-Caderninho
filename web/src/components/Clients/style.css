@@ -1,0 +1,89 @@
+.clients-container-open-menu {
+  margin-left: 10.5rem;
+  width: calc(100vw - 10.5rem);
+}
+
+.clients-container-closed-menu {
+  margin-left: 5rem;
+  width: calc(100vw - 5rem);
+}
+
+.clients-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 2rem;
+}
+
+.clients-container .client-header {
+  display: grid;
+  grid-template-areas:
+    '. . .'
+    'b . .'
+    '. . s';
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  padding: 1rem;
+  width: 100%;
+  border: solid 1px #0002;
+  border-radius: 5px;
+  margin-bottom: 2rem;
+}
+
+.clients-container .client-header svg {
+  grid-area: b;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  color: #fff;
+  background-color: var(--color-primary);
+}
+
+.clients-container .client-header svg:hover {
+  cursor: pointer;
+  background-color: var(--color-primary-light);
+}
+
+.clients-container .client-header fieldset {
+  grid-area: s;
+  border: 1px solid #0002;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.3rem;
+  border-radius: 5px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.clients-container .client-header fieldset legend {
+  display: none;
+}
+
+.clients-container .client-header fieldset:focus-within legend {
+  display: block;
+  margin: auto 0.5rem;
+  font-size: 0.8rem;
+  padding: 0.2rem;
+}
+
+.clients-container .client-header fieldset input {
+  outline: none;
+  border: none;
+  font-size: 0.7rem;
+  margin-right: 0.5rem;
+  background: none;
+}
+
+.clients-container .client-header fieldset svg {
+  width: 1rem;
+  height: 1rem;
+  color: #000;
+  background: none;
+}
+
+.clients-container .client-content .client-table {
+  display: grid;
+  grid-template-columns: 0.5fr 0.5fr 1fr 1fr 1fr 2fr 1fr 0.5fr;
+}

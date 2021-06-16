@@ -1,0 +1,43 @@
+:root {
+  --color-primary-dark: #072ac8;
+  --color-primary-light: #a2d6f9;
+  --color-primary: #1e96fc;
+  --color-secondary: #fcf300;
+  --color-secondary-dark: #ffc600;
+
+  --color-text: #000;
+  --color-text-secondary: #fff;
+
+  --color-background: #f5f5f5;
+
+  font-size: 100%;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: 0;
+}
+body {
+  background: var(--color-background);
+  overflow: auto;
+}
+body,
+input,
+button {
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: Ubuntu;
+}
+
+@media (max-width: 400px) {
+  :root {
+    font-size: 60%;
+  }
+}

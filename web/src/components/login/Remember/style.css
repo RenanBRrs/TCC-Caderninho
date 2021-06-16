@@ -1,0 +1,87 @@
+.remember-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--color-background);
+}
+
+.remember-content input {
+  width: 70vw;
+  max-width: 600px;
+  outline: none;
+  border: none;
+  border-radius: 0;
+  border-bottom: 1px solid #000;
+  margin: 0.8rem;
+  font-size: 1.5rem;
+  padding: 0.2rem;
+  background-color: var(--color-background);
+}
+
+.remember-content input:hover {
+  border-bottom: 2px solid var(--color-primary-dark);
+}
+
+.remember-content input:focus {
+  border-bottom: 2px solid var(--color-primary-dark);
+  background-color: #fff;
+}
+
+.remember-content .remember-content-send {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.remember-content .remember-content-send button {
+  border-radius: 5px;
+  background-color: var(--color-primary);
+  border: none;
+  color: var(--color-text-secondary);
+  padding: 0.5rem 1.5rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.remember-content .remember-content-send button:hover {
+  background-color: var(--color-primary-light);
+}
+
+.remember-content .remember-content-send button:disabled {
+  background-color: var(--color-primary-light);
+  opacity: 0.3;
+}
+
+.remember-content .remember-content-send .remember-back {
+  text-decoration: none;
+  background: none;
+  color: var(--color-primary);
+  padding: 0.5rem 1.5rem;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.remember-content .remember-content-send .remember-back:hover {
+  background-color: var(--color-primary-light);
+}
+
+@media (min-width: 900px) {
+  .remember-content {
+    width: 40vw;
+    left: 60vw;
+  }
+  .remember-content input {
+    width: 30vw;
+  }
+}

@@ -1,0 +1,31 @@
+.menu-position {
+  background-color: #fff;
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  grid-area: nav;
+  padding: 0.5rem;
+  height: 100%;
+  min-height: 100vh;
+  width: fit-content;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+}
+
+@media (min-width: 768px) {
+  .menu {
+    background-color: #fff;
+    border-right: 1px solid rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    grid-area: nav;
+    padding: 0.5rem;
+    height: 100%;
+    min-height: 100vh;
+    width: fit-content;
+  }
+}

@@ -17,7 +17,7 @@ const {
   customersIsDeleted,
   reactivateCustomer,
   updateCustomer,
-  newId
+  newId,
 } = require('../controllers/customers');
 const {
   createProduct,
@@ -38,9 +38,9 @@ routers.get('/', (req, res) => {
 
 routers.post('/login', login);
 routers.get('/logout', logout);
-// routers.use(middleware);
-/** colaborators */
 routers.post('/colaborators/create', createColaborator);
+routers.use(middleware);
+/** colaborators */
 routers.get('/colaborators/show', showColaborators);
 routers.get('/colaborators/show/:email', indexColaborator);
 routers.get('/colaborators/delete/show', colaboratorsIsDeleted);

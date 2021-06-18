@@ -39,7 +39,8 @@ export default (props) => {
           props.open
             ? 'menu-option menu-option-active'
             : 'menu-option menu-option-disabled'
-        }>
+        }
+        to='/relatorio'>
         <img alt='Gráfico relatórios' src={report} />
         <strong className={props.open ? 'menu-active' : 'menu-disabled'}>
           Relatórios

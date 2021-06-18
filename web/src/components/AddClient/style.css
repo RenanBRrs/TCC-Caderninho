@@ -1,20 +1,20 @@
 .new-client-container {
-  /* max-width: 600px; */
+  max-width: 600px;
   height: 100%;
-  min-height: 50vh;
+  min-height: 70vh;
   display: flex;
-  align-items: baseline;
-  /* justify-content: center; */
+  align-items: center;
+  justify-content: center;
   flex-direction: column;
   padding: 1rem;
 }
 
-.client-container-open-menu {
+.sale-container-open-menu {
   margin-left: 10.5rem;
   width: calc(100vw - 10.5rem);
 }
 
-.client-container-closed-menu {
+.sale-container-closed-menu {
   margin-left: 5rem;
   width: calc(100vw - 5rem);
 }
@@ -24,10 +24,10 @@
   font-weight: 700;
 }
 
-.new-client-container h2 {
+.new-client-container h3 {
   margin-top: 1rem;
   margin-bottom: 1rem;
-  font-size: 2rem;
+  font-size: 2.4rem;
   font-weight: 500;
 }
 

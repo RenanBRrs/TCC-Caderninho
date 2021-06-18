@@ -27,11 +27,11 @@ const Routes = () => {
     <BrowserRouter>
       <Switch>
         <Route path='/' exact component={Login} />
-        <Route path='/home' exact component={Home} />
-        <Route path='/AddClient' exact component={AddClient} />
-        <Route path='/client' exact component={Client} />
-        <Route path='/venda' exact component={Sales} />
-        <Route path='/estoque' exact component={Stocks} />
+        <PrivateRoute path='/home' exact component={Home} />
+        <PrivateRoute path='/AddClient' exact component={AddClient} />
+        <PrivateRoute path='/client' exact component={Client} />
+        <PrivateRoute path='/venda' exact component={Sales} />
+        <PrivateRoute path='/estoque' exact component={Stocks} />
 
         {/* <PrivateRoute path='/home' component={Home} /> */}
       </Switch>

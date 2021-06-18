@@ -1,5 +1,6 @@
 import './style.css';
 import { FiArrowLeft, FiSearch, FiMenu, FiBell } from 'react-icons/fi';
+import { Link } from 'react-router-dom';
 import avatar from '../../assets/avatar.svg';
 import Header from '../basics/Header';
 import { useEffect, useState } from 'react';
@@ -43,6 +44,13 @@ export default (props) => {
         <p className='user'>
           Olá, <strong>{name}!</strong>
         </p>
+      </div>
+      <div>
+        <Link to='/'>
+          <strong>
+            <p>SAIR</p>
+          </strong>
+        </Link>
       </div>
     </Header>
   );

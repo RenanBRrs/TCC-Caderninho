@@ -1,34 +1,23 @@
-import { React, useEffect, useState } from 'react';
-import { formatName, maskCpf, maskTel } from '../../Tools';
+import { useEffect, useState } from 'react';
+import { formatName, maskCpf, maskTel } from '../../Tools/index';
+import api from '../../services/api';
 import './style.css';
-// import SnackBar from '../SnackBar';
 
-export default (props) => {
+export default function NewUser(props) {
   const [name, setName] = useState('');
+  const [lastname, setLastname] = useState('');
+  const [telephone, setTelephone] = useState('');
   const [cpf, setCpf] = useState('');
   const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
   const [enable, setEnable] = useState(true);
 
-  /**
-   * states snackbar
-   */
-  const [open, setOpen] = useState(false);
-  const [severity, setSeverity] = useState('');
-  const [message, setMessage] = useState('');
-
   useEffect(() => {
-    if (
-      email.length > 0 &&
-      name.length > 0 &&
-      cpf.length > 0 &&
-      phone.length > 0
-    ) {
+    if (email.length > telephone.length > 0 && name.length > 0) {
       setEnable(false);
     } else {
       setEnable(true);
     }
-  }, [name, email, cpf, phone]);
+  }, [name, email, telephone]);
 
   useEffect(() => {
     const aux = cpf.replace(/\D/g, '');
@@ -40,19 +29,55 @@ export default (props) => {
     }
   }, [cpf]);
 
+  useEffect(() => {
+    const aux = name.split(' ');
+    setLastname(
+      aux.filter((value, index) => index > 0 && value.length > 0).join(' '),
+    );
+  }, [name]);
+
+  const handleAddCostumer = async (e) => {
+    try {
+      e.preventDefault();
+      const { data, status } = await api.post('/customers/create', {
+        name: name.substring(0, name.indexOf(' ')),
+        lastname,
+        telephone,
+        cpf,
+        email,
+        is_deleted: true,
+        created_at: new Date(),
+      });
+
+      if (status === 200) {
+        alert(`Usuário ID=${data.id} criado com sucesso!`);
+      }
+    } catch (error) {
+      console.log(error);
+      alert('error: ' + error.response.data.message || error.message);
+    }
+  };
+
   return (
     <form
       className={
         props.open
-          ? 'new-client-container client-container-open-menu'
-          : 'new-client-container client-container-closed-menu'
+          ? 'new-client-container sale-container-open-menu'
+          : 'new-client-container sale-container-closed-menu'
       }>
-      <h2>Adicionar um novo cliente!</h2>
+      <h1>Cadastro de cliente</h1>
+
       <input
         type='text'
-        placeholder='Nome Completo'
+        placeholder='Nome'
         value={name}
         onChange={(e) => setName(formatName(e.target.value))}
+      />
+      <input
+        type='text'
+        placeholder='Sobrenome'
+        value={lastname}
+        onChange={(e) => setLastname(formatName(e.target.value))}
       />
       <input
         type='text'
@@ -62,25 +87,22 @@ export default (props) => {
       />
       <input
         type='text'
+        placeholder='Telefone'
+        value={telephone}
+        onChange={(e) => setTelephone(e.target.value.replace(/\D/g, ''))}
+      />
+      <input
+        type='text'
         placeholder='Email'
         value={email}
         onChange={(e) => setEmail(e.target.value.toLowerCase())}
       />
-      <input
-        type='text'
-        placeholder='Telefone'
-        value={phone}
-        onChange={(e) => setPhone(maskTel(e.target.value))}
-      />
-      <button type='submit' onClick={() => setOpen((prevState) => !prevState)}>
-        Criar conta
+      <button
+        type='submit'
+        disabled={enable}
+        onClick={(e) => handleAddCostumer(e)}>
+        Cadastrar cliente
       </button>
-      {/* <SnackBar
-        severity={severity}
-        message={message}
-        time={6000}
-        action={(value) => setOpen(value)}
-      /> */}
     </form>
   );
-};
+}

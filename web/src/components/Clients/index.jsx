@@ -1,20 +1,24 @@
 import { useEffect, useState } from 'react';
-import {
-  FiArrowDown,
-  FiChevronUp,
-  FiArrowUp,
-  FiChevronDown,
-  FiPlus,
-  FiSearch,
-  FiTrash2,
-} from 'react-icons/fi';
+import { FiChevronDown, FiPlus, FiSearch } from 'react-icons/fi';
 import api from '../../services/api';
 import { maskCpf } from '../../Tools';
-import Select from '../basics/Select';
+// import Select from '../basics/Select';
 import './style.css';
 
 export default (props) => {
   const [clients, setClients] = useState([]);
+  const [cpf, setCpf] = useState('');
+  const [customer, setCustomer] = useState('');
+
+  useEffect(() => {
+    const aux = cpf.replace(/\D/g, '');
+    if (aux.length === 11) {
+      setCpf(maskCpf(aux));
+    } else if (aux.length > 11) {
+      alert('O cpf só pode ter 11 digitos');
+      setCpf(aux.substring(0, 11));
+    }
+  }, [cpf]);
 
   useEffect(() => {
     try {
@@ -33,6 +37,25 @@ export default (props) => {
     }
   });
 
+  const handleSearch = async (e) => {
+    try {
+      e.preventDefault();
+      if (cpf.length === 0) {
+        alert('Você precisa digitar um cpf.');
+        return '';
+      }
+      const result = await api.get(`/customers/show/${cpf.replace(/\D/g, '')}`);
+      console.log({ result: result.data });
+      if (result.status === 200) {
+        setCustomer(result.data);
+      } else {
+        setCustomer('');
+      }
+    } catch (error) {
+      alert(error.response.data.message);
+    }
+  };
+
   return (
     <div
       className={
@@ -46,11 +69,62 @@ export default (props) => {
           <legend>Pesquisar</legend>
           <input
             type='text'
-            name='search-client'
-            id='search-client'
-            placeholder='Digite o CPF para pesquisar!'
+            name='name'
+            id='name'
+            placeholder='Digite o CPF do cliente para pesquisar'
+            value={cpf}
+            onChange={(e) => setCpf(e.target.value)}
           />
-          <FiSearch />
+          <FiSearch onClick={(e) => handleSearch(e)} />
+
+          {Object.keys(customer).length > 0 && (
+            <>
+              <div>
+                <fieldset>
+                  <label htmlFor='name-cliente'>NOME</label>
+                  <input
+                    type='text'
+                    name='name-cliente'
+                    id='name-cliente'
+                    value={customer.name + ' ' + customer.lastname}
+                    readOnly
+                  />
+                </fieldset>
+                <fieldset>
+                  <label htmlFor='cpf-cliente'>CPF</label>
+                  <input
+                    type='text'
+                    name='name-cliente'
+                    id='cpf-cliente'
+                    value={customer.cpf}
+                    readOnly
+                  />
+                </fieldset>
+              </div>
+              <div>
+                <fieldset>
+                  <label htmlFor='email-cliente'>EMAIL</label>
+                  <input
+                    type='text'
+                    name='email-cliente'
+                    id='email-cliente'
+                    value={customer.email}
+                    readOnly
+                  />
+                </fieldset>
+                <fieldset>
+                  <label htmlFor='tel-cliente'>TEL</label>
+                  <input
+                    type='text'
+                    name='tel-cliente'
+                    id='tel-cliente'
+                    value={customer.telephone}
+                    readOnly
+                  />
+                </fieldset>
+              </div>
+            </>
+          )}
         </fieldset>
       </div>
       <div className='client-content'>
@@ -58,16 +132,12 @@ export default (props) => {
           <div className='client-hcell'></div>
           {clients.length > 0 &&
             Object.keys(clients[0]).map((k) => {
-              return (
-                <div className='client-hcell'>
-                  <h4>{k}</h4>
-                </div>
-              );
+              return <div className='client-hcell'>{/* <h4>{k}</h4> */}</div>;
             })}
           {clients.length > 0 &&
             clients.map((client, i) => {
               return Object.values(client).map((value, j) => {
-                if (j === 0) {
+                if (j === 9) {
                   return (
                     <>
                       <div className='client-bcell'>

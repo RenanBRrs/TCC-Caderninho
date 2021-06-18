@@ -55,7 +55,8 @@ export default function NewUser(props) {
         }, 3000);
       }
     } catch (error) {
-      alert('error' + error.response.data.message || error.message);
+      console.log(error);
+      alert('error: ' + error.response.data.message || error.message);
     }
   };
 

@@ -8,7 +8,6 @@ exports.up = async (knex) => {
     table.timestamp('date_sale').defaultTo(knex.fn.now());
     table.foreign('cpf_customer').references('cpf').inTable('customers');
     table.foreign('cpf_colaborator').references('cpf').inTable('colaborators');
-
   });
 };
 

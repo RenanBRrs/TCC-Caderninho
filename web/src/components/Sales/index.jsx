@@ -83,7 +83,8 @@ export default (props) => {
         alert('Nao foi possivel realizar a venda!');
       }
     } catch (error) {
-      alert('error foda ' + error.response.data.message || error.message);
+      console.log(error);
+      alert('error ' + error.response.data.message || error.message);
     }
   };
 

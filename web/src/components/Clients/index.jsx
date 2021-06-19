@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { FiChevronDown, FiPlus, FiSearch } from 'react-icons/fi';
+import { FiChevronDown, FiPlus, FiSearch, FiTrash2 } from 'react-icons/fi';
 import api from '../../services/api';
 import { maskCpf } from '../../Tools';
 // import Select from '../basics/Select';
@@ -9,6 +9,8 @@ export default (props) => {
   const [clients, setClients] = useState([]);
   const [cpf, setCpf] = useState('');
   const [customer, setCustomer] = useState('');
+  const [selectedProducts, setSelectedProducts] = useState('');
+  const [value, setValue] = useState('');
 
   useEffect(() => {
     const aux = cpf.replace(/\D/g, '');
@@ -127,37 +129,33 @@ export default (props) => {
           )}
         </fieldset>
       </div>
-      <div className='client-content'>
-        <div className='client-table'>
-          <div className='client-hcell'></div>
-          {clients.length > 0 &&
-            Object.keys(clients[0]).map((k) => {
-              return <div className='client-hcell'>{/* <h4>{k}</h4> */}</div>;
-            })}
-          {clients.length > 0 &&
-            clients.map((client, i) => {
-              return Object.values(client).map((value, j) => {
-                if (j === 9) {
-                  return (
-                    <>
-                      <div className='client-bcell'>
-                        <FiChevronDown />
-                      </div>
-                      <div className='client-bcell'>
-                        <h5>{value}</h5>
-                      </div>
-                    </>
-                  );
-                } else {
-                  return (
-                    <div className='client-bcell'>
-                      <h5>{j === 5 ? value.toString() : value}</h5>
+      <div className='cima'>
+        {clients.length > 0 &&
+          Object.keys(clients[0]).map((k) => {
+            return <div className='clients-hcell'></div>;
+          })}
+        {clients.length > 0 &&
+          clients.map((clients, i) => {
+            return Object.values(clients).map((value, j) => {
+              if (j === 0) {
+                return (
+                  <>
+                    <br></br>
+                    <h4>Cliente: {i + 1}</h4>
+                    <div className='clients-bcell'>
+                      <h5>ID: {value} </h5>
                     </div>
-                  );
-                }
-              });
-            })}
-        </div>
+                  </>
+                );
+              } else {
+                return (
+                  <div className='clients-bcell'>
+                    <h5>{j === 5 ? value.toString() : value}</h5>
+                  </div>
+                );
+              }
+            });
+          })}
       </div>
     </div>
   );

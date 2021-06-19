@@ -12,9 +12,10 @@
 //     expect(div(2, 1)).toBe(2);
 //   });
 // });
+import handleAddCostumer from '../src/TesteLogin';
 
-describe('Testando Login...', function () {
+describe('Testando adicionar cliente...', function () {
   it('Testando', function () {
-    expect(Login()).toBe(true);
+    expect(handleAddCostumer(200)).toBe(200);
   });
 });

@@ -28,7 +28,7 @@ export default (props) => {
             ? 'menu-option menu-option-active'
             : 'menu-option menu-option-disabled'
         }
-        to='/AddClient'>
+        to='/addclient'>
         <img alt='Folha cadastro' src={register} />
         <strong className={props.open ? 'menu-active' : 'menu-disabled'}>
           Cadastro
@@ -40,7 +40,7 @@ export default (props) => {
             ? 'menu-option menu-option-active'
             : 'menu-option menu-option-disabled'
         }
-        to='/relatorio'>
+        to='/report'>
         <img alt='Gráfico relatórios' src={report} />
         <strong className={props.open ? 'menu-active' : 'menu-disabled'}>
           Relatórios

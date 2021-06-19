@@ -5,9 +5,7 @@ import Container from '../../components/basics/Container';
 import Header from '../../components/Header';
 import Menu from '../../components/Menu';
 import './style.css';
-import Client from '../../components/Clients';
-
-
+import Report from '../../components/Report';
 
 export default () => {
   const [openMenu, setOpenMenu] = useState(true);
@@ -16,7 +14,7 @@ export default () => {
     <Container>
       <Header open={openMenu} setOpen={setOpenMenu} />
       <Menu open={openMenu} setOpen={setOpenMenu} />
-      <Client open={openMenu} setOpen={setOpenMenu} />
+      <Report open={openMenu} setOpen={setOpenMenu} />
     </Container>
   );
 };

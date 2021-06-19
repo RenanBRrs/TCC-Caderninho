@@ -8,6 +8,7 @@ import Sales from './pages/Sale';
 import Login from './pages/Login';
 import Stocks from './pages/Stock';
 import AddClient from './pages/AddClient';
+import Report from './pages/Report';
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -28,6 +29,7 @@ const Routes = () => {
       <Switch>
         <Route path='/' exact component={Login} />
         <PrivateRoute path='/home' exact component={Home} />
+        <PrivateRoute path='/report' exact component={Report} />
         <PrivateRoute path='/AddClient' exact component={AddClient} />
         <PrivateRoute path='/client' exact component={Client} />
         <PrivateRoute path='/venda' exact component={Sales} />

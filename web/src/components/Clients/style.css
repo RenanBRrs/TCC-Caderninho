@@ -15,6 +15,18 @@
   flex-direction: column;
   padding: 2rem;
 }
+.clients-bcell {
+  grid-area: s;
+  border: 1px solid #0002;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.3rem;
+  border-radius: 5px;
+  width: 100%;
+  max-width: 400px;
+}
+
 .clients-container .client-header div fieldset label {
   font-size: 0.8rem;
   font-weight: 700;
@@ -86,9 +98,4 @@
   height: 1rem;
   color: #000;
   background: none;
-}
-
-.clients-container .client-content .client-table {
-  display: grid;
-  grid-template-columns: 0.5fr 0.5fr 1fr 1fr 1fr 2fr 1fr 0.5fr;
 }

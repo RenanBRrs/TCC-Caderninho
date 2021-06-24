@@ -7,7 +7,6 @@ import AddClient from '../../components/AddClient';
 
 export default () => {
   const [openMenu, setOpenMenu] = useState(true);
-  const [customers, setCustomers] = useState('');
 
   return (
     <Container>

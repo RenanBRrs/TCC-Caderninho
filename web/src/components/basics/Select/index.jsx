@@ -1,6 +1,6 @@
 import './style.css';
 import { FiChevronDown, FiChevronUp, FiX } from 'react-icons/fi';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import React from 'react';
 
 export default (props) => {

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { formatName, maskCpf, maskTel } from '../../Tools/index';
+import { formatName, maskCpf } from '../../Tools/index';
 import api from '../../services/api';
 import './style.css';
 

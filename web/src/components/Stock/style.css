@@ -8,19 +8,13 @@
   width: calc(100vw - 5rem);
 }
 
-.stock-container .stock-hcell {
-  width: 12%;
-  display: inline-flex;
-}
-
 .stock-bcell {
-  grid-area: s;
-  border: 1px solid #0002;
+  border: 3px solid #0002;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 2.3rem;
+  padding: 1rem;
   border-radius: 5px;
-  width: 100%;
+  width: 200%;
   max-width: 400px;
 }

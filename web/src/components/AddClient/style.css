@@ -1,12 +1,14 @@
 .new-client-container {
-  max-width: 600px;
+  /* max-width: 600px; */
   height: 100%;
+  border-radius: 5px;
   min-height: 70vh;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   padding: 1rem;
+  border: 1px solid #0002;
 }
 
 .sale-container-open-menu {
@@ -20,8 +22,9 @@
 }
 
 .new-client-container h1 {
-  font-size: 3.5rem;
-  font-weight: 700;
+  font-size: 3.9rem;
+  font-weight: 3055;
+  margin: 4rem;
 }
 
 .new-client-container h3 {

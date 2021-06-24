@@ -54,16 +54,19 @@ exports.createCustomer = async (req, res) => {
 
 exports.showCustomers = async (req, res) => {
   try {
-    const customers = await db('customers').select(
-      'id',
-      'cpf',
-      'name',
-      'lastname',
-      'email',
-      'telephone',
-      'amount_owed',
-      'is_deleted',
-    );
+    const customers = await db('customers')
+      .join('sales', 'sales.cpf_customer', 'customers.cpf')
+      .select(
+        'sales.amount',
+        'customers.id',
+        'cpf',
+        'name',
+        'lastname',
+        'email',
+        'telephone',
+        'amount_owed',
+        'is_deleted',
+      );
     // .where('is_deleted', '=', false);
     return res.status(200).json(customers);
   } catch (error) {

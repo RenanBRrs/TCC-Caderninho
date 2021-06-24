@@ -1,5 +1,5 @@
 import './style.css';
-import { FiArrowLeft, FiSearch, FiMenu, FiBell } from 'react-icons/fi';
+import { FiArrowLeft, FiMenu } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 import avatar from '../../assets/avatar.svg';
 import Header from '../basics/Header';

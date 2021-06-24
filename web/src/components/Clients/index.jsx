@@ -1,160 +1,41 @@
 import { useEffect, useState } from 'react';
-import { FiChevronDown, FiPlus, FiSearch, FiTrash2 } from 'react-icons/fi';
 import api from '../../services/api';
-import { maskCpf } from '../../Tools';
-// import Select from '../basics/Select';
+
 import './style.css';
 
 export default (props) => {
-  const [clients, setClients] = useState([]);
-  const [cpf, setCpf] = useState('');
-  const [customer, setCustomer] = useState('');
-  const [selectedProducts, setSelectedProducts] = useState('');
-  const [value, setValue] = useState('');
-
-  useEffect(() => {
-    const aux = cpf.replace(/\D/g, '');
-    if (aux.length === 11) {
-      setCpf(maskCpf(aux));
-    } else if (aux.length > 11) {
-      alert('O cpf só pode ter 11 digitos');
-      setCpf(aux.substring(0, 11));
-    }
-  }, [cpf]);
+  const [sales, setSale] = useState([]);
 
   useEffect(() => {
     try {
-      api.get('/customers/show/').then(({ data }) =>
-        setClients(
-          data.map((client) => {
-            return {
-              ...client,
-              cpf: maskCpf(client.cpf),
-            };
-          }),
-        ),
-      );
+      api.get('/customers/show').then(({ data }) => {
+        setSale(data);
+      });
     } catch (error) {
       alert(error.response.data.message || error.message);
     }
-  });
-
-  const handleSearch = async (e) => {
-    try {
-      e.preventDefault();
-      if (cpf.length === 0) {
-        alert('Você precisa digitar um cpf.');
-        return '';
-      }
-      const result = await api.get(`/customers/show/${cpf.replace(/\D/g, '')}`);
-      console.log({ result: result.data });
-      if (result.status === 200) {
-        setCustomer(result.data);
-      } else {
-        setCustomer('');
-      }
-    } catch (error) {
-      alert(error.response.data.message);
-    }
-  };
-
+  }, []);
   return (
     <div
       className={
         props.open
-          ? 'clients-container clients-container-open-menu'
-          : 'clients-container clients-container-closed-menu'
+          ? 'sales-container sales-container-open-menu'
+          : 'sales-container sales-container-closed-menu'
       }>
-      <div className='client-header'>
-        <FiPlus />
-        <fieldset>
-          <legend>Pesquisar</legend>
-          <input
-            type='text'
-            name='name'
-            id='name'
-            placeholder='Digite o CPF do cliente para pesquisar'
-            value={cpf}
-            onChange={(e) => setCpf(e.target.value)}
-          />
-          <FiSearch onClick={(e) => handleSearch(e)} />
-
-          {Object.keys(customer).length > 0 && (
-            <>
-              <div>
-                <fieldset>
-                  <label htmlFor='name-cliente'>NOME</label>
-                  <input
-                    type='text'
-                    name='name-cliente'
-                    id='name-cliente'
-                    value={customer.name + ' ' + customer.lastname}
-                    readOnly
-                  />
-                </fieldset>
-                <fieldset>
-                  <label htmlFor='cpf-cliente'>CPF</label>
-                  <input
-                    type='text'
-                    name='name-cliente'
-                    id='cpf-cliente'
-                    value={customer.cpf}
-                    readOnly
-                  />
-                </fieldset>
-              </div>
-              <div>
-                <fieldset>
-                  <label htmlFor='email-cliente'>EMAIL</label>
-                  <input
-                    type='text'
-                    name='email-cliente'
-                    id='email-cliente'
-                    value={customer.email}
-                    readOnly
-                  />
-                </fieldset>
-                <fieldset>
-                  <label htmlFor='tel-cliente'>TEL</label>
-                  <input
-                    type='text'
-                    name='tel-cliente'
-                    id='tel-cliente'
-                    value={customer.telephone}
-                    readOnly
-                  />
-                </fieldset>
-              </div>
-            </>
-          )}
-        </fieldset>
-      </div>
       <div className='cima'>
-        {clients.length > 0 &&
-          Object.keys(clients[0]).map((k) => {
-            return <div className='clients-hcell'></div>;
-          })}
-        {clients.length > 0 &&
-          clients.map((clients, i) => {
-            return Object.values(clients).map((value, j) => {
-              if (j === 0) {
-                return (
-                  <>
-                    <br></br>
-                    <h4>Cliente: {i + 1}</h4>
-                    <div className='clients-bcell'>
-                      <h5>ID: {value} </h5>
-                    </div>
-                  </>
-                );
-              } else {
-                return (
-                  <div className='clients-bcell'>
-                    <h5>{j === 5 ? value.toString() : value}</h5>
-                  </div>
-                );
-              }
-            });
+        {sales.length > 0 &&
+          sales.map((sale, i) => {
+            return (
+              <div key={i}>
+                <br></br>
+                <h4>Cliente:</h4>
+                <div className='clients-bcell'>
+                  <h5>Nome : {sale.name} </h5>
+                  <h5> Sobrenome : {sale.lastname} </h5>
+                  <h5>CPF : {sale.cpf} </h5>
+                </div>
+              </div>
+            );
           })}
       </div>
     </div>

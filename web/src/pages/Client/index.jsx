@@ -1,13 +1,9 @@
 import { useState } from 'react';
-import { FiArrowDown, FiArrowUp, FiPlus, FiSearch } from 'react-icons/fi';
-import { Link } from 'react-router-dom';
 import Container from '../../components/basics/Container';
 import Header from '../../components/Header';
 import Menu from '../../components/Menu';
 import './style.css';
 import Client from '../../components/Clients';
-
-
 
 export default () => {
   const [openMenu, setOpenMenu] = useState(true);

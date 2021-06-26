@@ -43,7 +43,7 @@ export default (props) => {
         to='/report'>
         <img alt='Gráfico relatórios' src={report} />
         <strong className={props.open ? 'menu-active' : 'menu-disabled'}>
-          Relatórios
+          Vendas
         </strong>
       </Link>
       <Link
@@ -55,7 +55,7 @@ export default (props) => {
         to='/venda'>
         <img alt='Carrinho de compras' src={cart} />
         <strong className={props.open ? 'menu-active' : 'menu-disabled'}>
-          Venda
+          Vender
         </strong>
       </Link>
       <Link

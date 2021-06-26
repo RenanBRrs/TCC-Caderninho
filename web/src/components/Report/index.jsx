@@ -25,6 +25,8 @@ export default (props) => {
       <div className='cima'>
         {sales.length > 0 &&
           sales.map((sale, i) => {
+            console.log(sale);
+
             return (
               <div key={i}>
                 <br></br>

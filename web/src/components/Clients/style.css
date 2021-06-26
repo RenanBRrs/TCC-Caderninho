@@ -1,3 +1,14 @@
+.sales-container {
+  display: grid;
+  grid-template-areas:
+    'h h h'
+    'a a a'
+    'm m m'
+    'f f f';
+  padding: 2rem;
+  overflow: auto;
+}
+
 .clients-container-open-menu {
   margin-left: 10.5rem;
   width: calc(100vw - 10.5rem);
@@ -24,4 +35,49 @@
   border-radius: 5px;
   width: 200%;
   max-width: 400px;
+}
+.sales-container .customer-header {
+  grid-area: h;
+  width: 100%;
+  padding: 2rem;
+  border: 1px solid #0002;
+  border-radius: 20px;
+}
+.sales-container .customer-header fieldset {
+  width: 100%;
+  padding: 0.2rem;
+  border: 1px solid #0005;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 5px;
+}
+.sales-container .customer-header fieldset svg:hover {
+  background-color: var(--color-primary-light);
+  cursor: pointer;
+  border-radius: 50%;
+}
+.sales-container .customer-header fieldset input {
+  width: 85%;
+  outline: none;
+  border: none;
+}
+.sales-container .customer-header div {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+}
+.sales-container .customer-header div fieldset {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 30%;
+  border: none;
+}
+.sales-container .customer-header div fieldset label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-right: 0.5rem;
 }

@@ -10,30 +10,25 @@
   padding: 1rem;
   border: 1px solid #0002;
 }
-
 .sale-container-open-menu {
   margin-left: 10.5rem;
   width: calc(100vw - 10.5rem);
 }
-
 .sale-container-closed-menu {
   margin-left: 5rem;
   width: calc(100vw - 5rem);
 }
-
 .new-client-container h1 {
-  font-size: 3.9rem;
-  font-weight: 3055;
-  margin: 4rem;
+  font-size: 2.9rem;
+  font-weight: 500;
+  margin: 3rem;
 }
-
 .new-client-container h3 {
   margin-top: 1rem;
   margin-bottom: 1rem;
   font-size: 2.4rem;
   font-weight: 500;
 }
-
 .new-client-container input {
   width: 70vw;
   max-width: 600px;
@@ -46,16 +41,13 @@
   padding: 0.2rem;
   background-color: var(--color-background);
 }
-
 .new-client-container input:hover {
   border-bottom: 2px solid var(--color-primary-dark);
 }
-
 .new-client-container input:focus {
   border-bottom: 2px solid var(--color-primary-dark);
   background-color: #fff;
 }
-
 .new-client-container button {
   width: 70vw;
   max-width: 600px;
@@ -67,16 +59,13 @@
   font-size: 1.2rem;
   cursor: pointer;
 }
-
 .new-client-container button:hover {
   background-color: var(--color-primary-light);
 }
-
 .new-client-container button:disabled {
   background-color: var(--color-primary-light);
   opacity: 0.3;
 }
-
 @media (min-width: 900px) {
   .new-client-container input,
   .new-client-container button {

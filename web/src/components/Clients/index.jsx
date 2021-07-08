@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import api from '../../services/api';
 import { FiSearch } from 'react-icons/fi';
 import { maskCpf } from '../../Tools';
-
 import './style.css';
 
 export default (props) => {
@@ -32,6 +31,27 @@ export default (props) => {
     }
   }, []);
 
+  //DELETE CUSTOMER
+  const handleDeleteCostumer = async (e) => {
+    try {
+      e.preventDefault();
+      const result = await api.delete(
+        `/customers/delete/${cpf.replace(/\D/g, '')}`,
+      );
+      if (result.status === 200) {
+        alert('Cliente excluido');
+        //ATUALIZA PAGINA F5
+        document.location.reload(true);
+      } else {
+        setCustomers('');
+      }
+    } catch (error) {
+      document.location.reload(true);
+      alert(error.response.data.message);
+    }
+  };
+
+  // SEARCH CUSTOMER
   const handleSearch = async (e) => {
     console.log(customers);
     try {
@@ -59,12 +79,14 @@ export default (props) => {
           : 'sales-container sales-container-closed-menu'
       }>
       <header className='customer-header'>
+        <h4>Exibir clientes</h4>
+
         <fieldset>
           <input
             type='text'
             name='name'
             id='name'
-            placeholder='Digite o CPF do cliente para pesquisar'
+            placeholder='Digite o CPF do cliente'
             value={cpf}
             onChange={(e) => setCpf(e.target.value)}
           />
@@ -116,16 +138,9 @@ export default (props) => {
                   readOnly
                 />
               </fieldset>
-              <fieldset>
-                <label htmlFor='tel-cliente'>Valor</label>
-                <input
-                  type='text'
-                  name='tel-cliente'
-                  id='tel-cliente'
-                  value={customers.amount}
-                  readOnly
-                />
-              </fieldset>
+              <button id='dell' onClick={(e) => handleDeleteCostumer(e)}>
+                Delete
+              </button>
             </div>
           </>
         )}

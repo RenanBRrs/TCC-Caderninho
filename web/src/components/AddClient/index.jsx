@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { formatName, maskCpf } from '../../Tools/index';
+import { formatName, maskCpf, maskTel } from '../../Tools/index';
 import api from '../../services/api';
 import './style.css';
 
@@ -30,12 +30,22 @@ export default function NewUser(props) {
   }, [cpf]);
 
   useEffect(() => {
+    const str = telephone.replace(/\D/g, '');
+    if (str.length === 11) {
+      setTelephone(maskTel(str));
+    } else if (str.length > 11) {
+      alert('O telefone só pode ter 11 digitos');
+      setTelephone(str.substring(0, 11));
+    }
+  }, [telephone]);
+
+  useEffect(() => {
     const aux = name.split(' ');
     setLastname(
       aux.filter((value, index) => index > 0 && value.length > 0).join(' '),
     );
   }, [name]);
-
+// ADD CLIENT
   const handleAddCostumer = async (e) => {
     try {
       e.preventDefault();
@@ -50,14 +60,13 @@ export default function NewUser(props) {
       });
 
       if (status === 200) {
-        alert(`Usuário ID=${data.id} criado com sucesso!`);
+        alert(`Cliente ID: ${data.id} criado com sucesso!`);
       }
     } catch (error) {
       console.log(error);
       alert('error: ' + error.response.data.message || error.message);
     }
   };
-
   return (
     <form
       className={
@@ -66,7 +75,6 @@ export default function NewUser(props) {
           : 'new-client-container sale-container-closed-menu'
       }>
       <h1>Cadastro de cliente</h1>
-
       <input
         type='text'
         placeholder='Nome'

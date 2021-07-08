@@ -15,7 +15,6 @@ export default (props) => {
       alert(error.response.data.message || error.message);
     }
   }, []);
-
   return (
     <div
       className={
@@ -34,6 +33,7 @@ export default (props) => {
                   <h5>Nome : {sale.name} </h5>
                   <h5> Marca : {sale.product_brand} </h5>
                   <h5>PREÇO : {sale.price} </h5>
+
                 </div>
               </div>
             );

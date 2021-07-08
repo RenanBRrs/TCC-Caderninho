@@ -12,6 +12,10 @@ export default (props) => {
     const aux = JSON.parse(localStorage.getItem('user'))[0];
     setName(aux.name.toLowerCase());
   });
+
+  const handleExit = async (e) => {
+    localStorage.clear();
+  };
   return (
     <Header open={props.open}>
       {props.open ? (
@@ -48,7 +52,7 @@ export default (props) => {
       <div>
         <Link to='/'>
           <strong>
-            <p>SAIR</p>
+            <p onClick={(e) => handleExit(e)}>SAIR</p>
           </strong>
         </Link>
       </div>

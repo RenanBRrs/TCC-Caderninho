@@ -38,19 +38,30 @@
 }
 .sales-container .customer-header {
   grid-area: h;
-  width: 100%;
-  padding: 2rem;
-  border: 1px solid #0002;
+  width: 76%;
+  padding: 1rem;
+  border: 2px solid #0002;
   border-radius: 20px;
 }
 .sales-container .customer-header fieldset {
-  width: 100%;
+  width: 30%;
   padding: 0.2rem;
   border: 1px solid #0005;
   display: flex;
   align-items: center;
   justify-content: space-between;
   border-radius: 5px;
+}
+#dell {
+  border-radius: 5px;
+  background-color: var(--color-primary);
+  border: none;
+  color: var(--color-text-secondary);
+  padding: 0.5rem 1.5rem;
+  font-size: 1.1rem;
+  cursor: pointer;
+  width: 12%;
+  margin-top: 3rem;
 }
 .sales-container .customer-header fieldset svg:hover {
   background-color: var(--color-primary-light);
@@ -65,7 +76,6 @@
 .sales-container .customer-header div {
   width: 100%;
   display: flex;
-  align-items: center;
   justify-content: space-between;
   flex-direction: column;
 }

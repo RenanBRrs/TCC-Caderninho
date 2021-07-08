@@ -47,7 +47,8 @@ exports.deleteProduct = async (req, res) => {
     const id = req.params.id.replace(/\D/g, '');
     const product = await db('products')
       .where('id', '=', id)
-      .update({ is_deleted: true, deleted_at: new Date().toLocaleString() })
+      // .update({ is_deleted: true, deleted_at: new Date().toLocaleString() })
+      .del()
       .returning();
     if (product === 0) {
       return res.status(406).json({ message: 'Product not found' });
@@ -129,7 +130,7 @@ exports.updateProduct = async (req, res) => {
       .normalize('NFD')
       .replace(/[\u0300-\u036f]/g, '')
       .toUpperCase();
-    const price = req.body.price
+    const price = req.body.price;
 
     const product = await db('products')
       .where('id', '=', id)

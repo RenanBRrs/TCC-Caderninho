@@ -70,4 +70,5 @@ routers.post('/sales/create', createSale);
 routers.get('/sales/show', showSales);
 routers.get('/sales/show/:id', indexSale);
 
+
 module.exports = routers;

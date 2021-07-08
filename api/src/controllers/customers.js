@@ -76,11 +76,12 @@ exports.showCustomers = async (req, res) => {
 };
 
 exports.deleteCustomer = async (req, res) => {
+
   try {
     const cpf = req.params.cpf.replace(/\D/g, '');
     const customer = await db('customers')
       .where('cpf', '=', cpf)
-      .update({ is_deleted: true, deleted_at: new Date().toLocaleString() })
+      .del()
       .returning();
     if (customer === 0) {
       return res.status(406).json({ message: 'Customer not found' });
@@ -89,11 +90,9 @@ exports.deleteCustomer = async (req, res) => {
       .status(200)
       .json({ cpf, message: 'Customer deleted successfully' });
   } catch (error) {
-    console.log(error);
     return res.status(400).json({ error: 'Error deleting customer' });
   }
 };
-
 exports.indexCustomer = async (req, res) => {
   try {
     const cpf = req.params.cpf;
@@ -190,7 +189,6 @@ exports.updateCustomer = async (req, res) => {
       .status(200)
       .json({ cpf, message: 'Customer updated successfully' });
   } catch (error) {
-    console.log(error);
     return res.status(400).json({ error: 'Error update customer' });
   }
 };

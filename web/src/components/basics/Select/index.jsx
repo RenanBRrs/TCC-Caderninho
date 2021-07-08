@@ -21,7 +21,6 @@ export default (props) => {
       setOptions(props.options);
     }
   };
-
   const handleClickSelect = (event, product) => {
     if (event.type === 'blur') {
       props.setSelected({});
@@ -31,12 +30,10 @@ export default (props) => {
       setOpen(!open);
     }
   };
-
   const handleClickRemove = (product) => {
     setIsSelect(false);
     props.setSelected({});
   };
-
   const handleSearch = (e) => {
     if (e) e.preventDefault();
     const v = e.target.value;
@@ -46,11 +43,9 @@ export default (props) => {
     setOptions(aux);
     props.setSelected({ ...props.selected, name: v });
   };
-
   const handleCloseMenu = (e) => {
     setOpen(false);
   };
-
   return (
     <div
       className='select-container'
